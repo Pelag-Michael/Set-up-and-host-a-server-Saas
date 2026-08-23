@@ -113,7 +113,21 @@ A linear, tickable version of the whole guide. See the linked doc for the
 - [ ] No public community space (Discord/forum/etc.) stood up before there
       are real active users for it
 
-## 11. Ship
+## 11. SEO and getting indexed — [`docs/13-seo-and-search-console.md`](docs/13-seo-and-search-console.md)
+
+- [ ] Checked for an accidental `noindex` meta tag before doing any other
+      SEO work
+- [ ] Title/description/canonical/OG/Twitter Card tags present on real pages
+- [ ] `robots.txt` and `sitemap.xml` exist and are reachable
+- [ ] If domain is behind Cloudflare: checked the *actual served*
+      `robots.txt` (not just the file on disk) for an injected AI-crawler
+      block from "Managed robots.txt" — decided deliberately whether to
+      keep or disable it
+- [ ] Google Search Console property added and verified
+- [ ] Sitemap submitted and homepage indexing explicitly requested (not just
+      waiting for organic crawl discovery)
+
+## 12. Ship
 
 - [ ] Full test suite passing
 - [ ] Service restarted with the final code, health check green

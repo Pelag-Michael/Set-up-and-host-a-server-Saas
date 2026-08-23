@@ -60,6 +60,24 @@ Keep the root file to roughly 20–50 links. If you have substantial docs,
 put the full content in `/llms-full.txt` (a single flattened markdown file)
 rather than bloating the index.
 
+**Only link routes that actually exist and render real content right now.**
+It's tempting to write the file around the product's *intended* information
+architecture (a page per feature area, a docs section, an FAQ) before those
+pages exist. Check the real router/site structure first — a broken link in
+`llms.txt` is worse than a missing section, since it actively signals the
+file is unmaintained.
+
+### Deploying it
+
+If the frontend is a single-page app served from a static webroot, a file
+at the webroot root (e.g. `<webroot>/llms.txt`) resolves at `/llms.txt`
+automatically through whatever fallback-to-`index.html` routing already
+serves the rest of the SPA — no server config change needed, same as
+`favicon.svg` or any other root-level static file. If source and deployed
+webroot have drifted apart (see doc 04), write the file to **both** so the
+next rebuild doesn't silently drop it. Verify with `curl -I` for a `200`,
+and confirm your `robots.txt` (see doc 13) doesn't disallow it.
+
 ### What goes in it
 
 - A concise, factual summary — not marketing copy. "Automates X inside Y and

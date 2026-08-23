@@ -24,6 +24,26 @@ the problem faster than "why is this failing".
   domain — multiple `include:` mechanisms and distinct DKIM selectors
   coexist fine.
 
+## SEO / discoverability
+
+- **A CDN/proxy provider can inject content into `robots.txt` that isn't in
+  your own file.** Cloudflare's "Managed robots.txt" (AI Crawl Control →
+  Signals) auto-prepends a block disallowing named AI crawlers
+  (`GPTBot`, `ClaudeBot`, `Bytespider`, etc.), often on by default. Your own
+  `User-agent: * / Allow: /` at the bottom doesn't override a more specific
+  named-bot block above it — robots.txt matching is per-user-agent group,
+  not "last rule wins." Always check what's actually served
+  (`curl -s https://yoursite.com/robots.txt`), not just what's in your repo.
+- **A freshly-verified Search Console domain property can silently fail to
+  accept a sitemap submission** — the form appears to succeed but the
+  sitemaps table stays empty with no error shown. Not a mistake in the URL
+  you entered; just retry after a short wait.
+- **Removing a `noindex` meta tag doesn't get a site indexed by itself** —
+  Google still has to crawl and decide to index it, which can take days
+  with no prompting. Use Search Console's URL Inspection → Request Indexing
+  for the pages you actually care about instead of waiting on organic
+  discovery.
+
 ## Account creation / verification friction
 
 - **2FA is a hard prerequisite for app-specific passwords** on most
