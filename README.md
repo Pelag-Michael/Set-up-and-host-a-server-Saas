@@ -34,6 +34,7 @@ leak secrets or get your mail flagged as spam.
 | 9 | [`docs/09-automation-and-scheduling.md`](docs/09-automation-and-scheduling.md) | Autostart on boot, daily/recurring jobs, without a real ops platform |
 | 10 | [`docs/10-testing-and-safety-practices.md`](docs/10-testing-and-safety-practices.md) | Never test against production data — how to actually enforce that on yourself |
 | 11 | [`docs/11-pitfalls-and-lessons-learned.md`](docs/11-pitfalls-and-lessons-learned.md) | Every specific thing that broke, and why, in one place |
+| 12 | [`docs/12-discovery-and-community-marketing.md`](docs/12-discovery-and-community-marketing.md) | `llms.txt` (what it's actually worth), and a zero-budget community/social playbook for a tiny team |
 
 There's also [`CHECKLIST.md`](CHECKLIST.md) — a linear, tickable version of
 the whole setup if you just want the steps without the explanations.

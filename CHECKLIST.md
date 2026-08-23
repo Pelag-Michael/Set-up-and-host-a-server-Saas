@@ -99,7 +99,21 @@ A linear, tickable version of the whole guide. See the linked doc for the
 - [ ] Any one-off real-system test used clearly-marked throwaway data,
       cleaned up immediately after
 
-## 10. Ship
+## 10. Discovery — [`docs/12-discovery-and-community-marketing.md`](docs/12-discovery-and-community-marketing.md)
+
+- [ ] `llms.txt` published (only if it takes under an hour — it's hygiene,
+      not a growth channel) and confirmed reachable (`curl -I` returns 200)
+- [ ] `robots.txt` does not disallow `/llms.txt`
+- [ ] No confidential/unreleased info, secrets, or model-directed
+      instructions inside `llms.txt`
+- [ ] Picked at most 2-3 channels to actively run, not spread across
+      everything
+- [ ] Target communities identified, their self-promotion rules read,
+      before posting anything
+- [ ] No public community space (Discord/forum/etc.) stood up before there
+      are real active users for it
+
+## 11. Ship
 
 - [ ] Full test suite passing
 - [ ] Service restarted with the final code, health check green
