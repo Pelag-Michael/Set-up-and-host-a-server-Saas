@@ -6,6 +6,11 @@ attention. This doc covers two things that get asked about early and are
 easy to over-invest in: the `llms.txt` convention, and organic/community
 marketing for a pre-launch or closed-beta product.
 
+Official *brand* accounts (X / LinkedIn / Instagram / Facebook) — handles,
+assets, in-app search — live in
+[`14-brand-accounts-and-social-search.md`](14-brand-accounts-and-social-search.md).
+Do not mix those with the participation rules below.
+
 ## `llms.txt`: do it, but budget an hour, not a week
 
 `llms.txt` is a proposed convention (a plain-markdown file at

@@ -35,7 +35,8 @@ leak secrets or get your mail flagged as spam.
 | 10 | [`docs/10-testing-and-safety-practices.md`](docs/10-testing-and-safety-practices.md) | Never test against production data — how to actually enforce that on yourself |
 | 11 | [`docs/11-pitfalls-and-lessons-learned.md`](docs/11-pitfalls-and-lessons-learned.md) | Every specific thing that broke, and why, in one place |
 | 12 | [`docs/12-discovery-and-community-marketing.md`](docs/12-discovery-and-community-marketing.md) | `llms.txt` (what it's actually worth), and a zero-budget community/social playbook for a tiny team |
-| 13 | [`docs/13-seo-and-search-console.md`](docs/13-seo-and-search-console.md) | On-page SEO checklist, `robots.txt`/`sitemap.xml`, the Cloudflare AI-crawler-blocking gotcha, and actually getting a new domain indexed |
+| 13 | [`docs/13-seo-and-search-console.md`](docs/13-seo-and-search-console.md) | On-page SEO, indexing, entity/name-collision, brand vs search modifier, SPA head/H1, JSON-LD `@graph`, Search Console that actually succeeds |
+| 14 | [`docs/14-brand-accounts-and-social-search.md`](docs/14-brand-accounts-and-social-search.md) | Official brand accounts (X/LinkedIn/IG/Facebook): identity, handles, assets, in-app search vs feed, two-way links with the site |
 
 There's also [`CHECKLIST.md`](CHECKLIST.md) — a linear, tickable version of
 the whole setup if you just want the steps without the explanations.

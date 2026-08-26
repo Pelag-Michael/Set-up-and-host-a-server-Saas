@@ -126,8 +126,34 @@ A linear, tickable version of the whole guide. See the linked doc for the
 - [ ] Google Search Console property added and verified
 - [ ] Sitemap submitted and homepage indexing explicitly requested (not just
       waiting for organic crawl discovery)
+- [ ] Confirmed in Search Console: homepage “URL is on Google”; sitemap row
+      status Success (retry later if the UI no-ops right after verify)
+- [ ] Title is brand + category (+ search modifier people actually type),
+      not the brand name alone and not a single-integration wedge
+- [ ] Initial HTML has an `<h1>` and one factual paragraph; JSON-LD
+      `WebSite` + `Organization` + `SoftwareApplication`; `sameAs` only for
+      live profiles
+- [ ] SPA extra routes (`/download`, etc.) have their own title/canonical
+      if they are in the sitemap
+- [ ] Footer/social hrefs are real URLs or omitted — no `href="#"`
+- [ ] Live document root (the one the tunnel serves) was updated, not only
+      a git worktree copy
 
-## 12. Ship
+## 12. Brand accounts — [`docs/14-brand-accounts-and-social-search.md`](docs/14-brand-accounts-and-social-search.md)
+
+- [ ] Brand Google account used for every official signup (codes land in
+      that inbox, not a personal one)
+- [ ] Display name = brand; handle may carry a search modifier if `@Brand`
+      is taken
+- [ ] Avatar/banner from the real logo; same visual on every platform
+- [ ] Bio uses category language + site URL; specific apps only as proof,
+      not as the identity line
+- [ ] Site footer and JSON-LD `sameAs` point at the live profile; profile
+      website field points at the site
+- [ ] Community third-party spaces stay on the participation rules in
+      doc 12 — brand pages are not a license to bot other people’s servers
+
+## 13. Ship
 
 - [ ] Full test suite passing
 - [ ] Service restarted with the final code, health check green
