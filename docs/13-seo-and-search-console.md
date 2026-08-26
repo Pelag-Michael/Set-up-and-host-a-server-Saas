@@ -161,12 +161,107 @@ which can take days to weeks with zero prompting. To speed this up:
    possibly backlinks — indexed and top-of-results are different
    milestones, don't conflate them when reporting status.
 
+## After the site is indexed: why branded search still misses you
+
+Indexed ≠ ranking. A brand-new domain can be “URL is on Google” in Search
+Console and still fail a bare-brand search (`YourBrand`) because:
+
+1. **Name collision.** If the brand string already belongs to older
+   companies, products, artists, or baby-name pages, Google treats the
+   query as an ambiguous entity. A *modifier* people actually type
+   (`YourBrand AI`, `YourBrand app`) disambiguates; the bare name does not.
+2. **Thin association.** A `<title>` that is only the brand name confirms
+   the name and says nothing about category. Pair the brand with a stable
+   category phrase in title, H1, and the first paragraph.
+3. **SPA shell.** If the first HTML response is metadata plus
+   `<div id="root"></div>`, crawlers that skip JS never see product copy.
+   Google *can* render JS, but it is a queue, not a guarantee, and social
+   crawlers usually do not. Put a real `<h1>` + one factual paragraph +
+   real `<a href>` links in the *initial* HTML. A short, genuine
+   screen-reader-style block is a stopgap; prerender/SSR is the real fix.
+4. **One-app titles.** Do not put a single integration (the current GTM
+   wedge) into the *homepage* title. It trains search and humans that the
+   product *is* that one app. Keep homepage language general (category +
+   “many tools”). Put specific apps in a “works with” section, JSON-LD
+   `featureList`, and `llms.txt` — the machine-facing layer.
+5. **Dummy social links.** Footer `href="#"` for X/Discord/YouTube is not
+   a placeholder Google can use. Only publish URLs that resolve. Add those
+   same URLs to Organization JSON-LD `sameAs` after the profile is live.
+
+### Brand name vs search modifier
+
+Keep the **legal / display brand unchanged**. If users type
+`Brand + AI` (or `Brand + app`), put that modifier in:
+
+- title / meta description / OG / Twitter text
+- JSON-LD `alternateName` (the search-shaped variant, not a keyword dump)
+- social *handle* if the clean `@Brand` is taken
+
+Do **not** rename the product to `Brand AI`. Display name stays `Brand`.
+The modifier is discoverability, not a new brand.
+
+Visible copy: category language (orchestrator, command surface, creative
+workflows, AI). Hidden / structured: supported-app names, product lines.
+Do not put protocol internals (internal bridges, private APIs) in public
+copy.
+
+### JSON-LD that actually helps entity matching
+
+One `SoftwareApplication` blob is a start. Once you have a real homepage
+and at least one public profile, ship a small `@graph`:
+
+- `WebSite` — `name` = brand, `alternateName` = search variants you
+  actually want (`Brand AI`, the domain)
+- `Organization` — same brand, `logo`, `sameAs` only for live profiles
+- `SoftwareApplication` — factual description, OS, `featureList` of real
+  capabilities / supported tools
+
+Do not invent ratings, user counts, awards, or “supported” apps that are
+not actually in the current public product.
+
+### SPA routes that share one `index.html`
+
+If the PHP/static router always serves the same `index.html`, every path
+inherits the homepage canonical. Sitemap listing `/download` then does
+nothing useful — Google will collapse it to `/`.
+
+Cheap fix without a rebuild: the fallback router reads `index.html` and
+string-replaces `<title>`, canonical, and `og:url` when the path is a
+known public route. Only do this for routes that actually render distinct
+content. Keep the replacements exact-string and unique so you cannot
+accidentally rewrite a substring inside JSON-LD.
+
+### Search Console — what actually worked after the first pass
+
+- Verify the **Domain** property under the **brand** Google account (the
+  same mailbox that already owns DNS / email / Gravatar), not a personal
+  one. Switching accounts in the Google picker is easy to miss; “you
+  don’t have access” usually means the wrong `authuser`.
+- URL Inspection is the source of truth for “is this URL on Google,” not
+  one incognito SERP.
+- After a real head/schema change, **Request indexing again**. Repeat
+  requests do not jump the queue.
+- Sitemap submit via the UI can no-op silently on a freshly verified
+  property. Retry later with the full sitemap URL
+  (`https://yoursite.com/sitemap.xml`). Success looks like: status
+  **Success**, last read = today, discovered URL count matching the
+  sitemap.
+- Re-check `curl` of live HTML after deploy — the git worktree you edited
+  is not always the document root the tunnel is serving. Copy (or edit)
+  the live webroot too.
+
 ## Quick verification checklist
 
 ```bash
 curl -s -o /dev/null -w "%{http_code}\n" https://yoursite.com/llms.txt
 curl -s -o /dev/null -w "%{http_code}\n" https://yoursite.com/robots.txt
 curl -s -o /dev/null -w "%{http_code}\n" https://yoursite.com/sitemap.xml
-curl -s https://yoursite.com/ | grep -oE '<meta name="robots"[^>]*>|<link rel="canonical"[^>]*>'
+curl -s https://yoursite.com/ | grep -oE '<title>[^<]+|<meta name="robots"[^>]*>|<link rel="canonical"[^>]*>|<h1>[^<]+'
 curl -s https://yoursite.com/robots.txt   # read the FULL output, not just your own file's content — check for injected blocks
+curl -s https://yoursite.com/download | grep -oE '<title>[^<]+|<link rel="canonical"[^>]*>'
 ```
+
+Also, in Search Console: URL Inspection → “URL is on Google”; Sitemaps →
+row present, status Success. Then search incognito for the bare brand
+*and* `brand + modifier` from more than one country/language before
+declaring ranking status.

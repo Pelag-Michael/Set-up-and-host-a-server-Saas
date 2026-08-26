@@ -1,10 +1,11 @@
-# 14. Setting Up Official Brand Social Accounts
+# 15. Brand Account Posting Style and Image Assets
 
 Doc 12 covers *participation* (a founder's personal presence in existing
-communities). This doc covers the separate, lower-risk track: standing up
-the product's own official accounts (X, Instagram, Facebook Page, LinkedIn
-Company Page) and keeping their bios, avatars, and banners consistent — plus
-the specific platform gotchas that cost real time to discover.
+communities). Doc 14 covers *creating* the official accounts (X, Instagram,
+Facebook Page, LinkedIn Company Page) — identity kit, handles, first assets.
+This doc picks up after creation: keeping bios/banners consistent over
+time, writing content that doesn't read as one caption copy-pasted four
+times, and specific platform gotchas that cost real time to discover.
 
 ## Credentials: one dedicated file, not `.env`
 
