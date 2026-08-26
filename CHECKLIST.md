@@ -127,7 +127,27 @@ A linear, tickable version of the whole guide. See the linked doc for the
 - [ ] Sitemap submitted and homepage indexing explicitly requested (not just
       waiting for organic crawl discovery)
 
-## 12. Ship
+## 12. Brand social accounts — [`docs/14-brand-social-accounts-and-assets.md`](docs/14-brand-social-accounts-and-assets.md)
+
+- [ ] Credentials for each social account saved to one dedicated gitignored
+      file, updated the moment a new one is created (not at session end)
+- [ ] Decided deliberately whether the founder's real identity is publicly
+      linked to the brand account/page (e.g. LinkedIn Company Page "People"
+      tab), before creation, not after
+- [ ] Each platform has its own distinct bio sentence — not one shared
+      slogan copy-pasted everywhere — with no link inside the bio text
+      itself (link goes in the platform's dedicated link field)
+- [ ] Cross-links between your own social accounts kept minimal — the
+      product website is the one hub; each social profile points back to it
+- [ ] A short cross-platform posting-style guide written once, so
+      announcements get platform-appropriate copy instead of one caption
+      copy-pasted everywhere
+- [ ] Banner/avatar images checked against each platform's minimum pixel
+      dimensions before assuming a blurry preview is a resolution problem
+- [ ] Blurry PNG banners re-exported as high-quality JPEG (sRGB, ~90-92
+      quality, 4:4:4 subsampling) if resolution was already sufficient
+
+## 13. Ship
 
 - [ ] Full test suite passing
 - [ ] Service restarted with the final code, health check green
